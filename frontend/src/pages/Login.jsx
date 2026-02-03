@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black font-sans">
       <div className="bg-white p-10 rounded-md shadow-2xl border border-gray-200 w-96">
-        <h2 className="text-3xl font-bold mb-8 text-center text-black tracking-tight border-b-2 border-black pb-4">Smart Recon</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center text-black tracking-tight border-b-2 border-black pb-4">Smart Reconciliation & Audit System</h2>
         {error && (
             <div className="bg-black text-white p-3 mb-6 rounded-md text-sm font-medium text-center">
                 {error}
