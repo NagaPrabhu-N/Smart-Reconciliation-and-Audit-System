@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('https://smart-recon-testing.vercel.app/api/auth/login', {
+      const { data } = await axios.post('https://smart-reconciliation-and-audit-syst.vercel.app/api/auth/login', {
         email,
         password,
       });

@@ -13,7 +13,7 @@ const AuditHistory = () => {
     const fetchLogs = async () => {
       try {
         const { data } = await axios.get(
-          'https://smart-recon-testing.vercel.app/api/audit',
+          'https://smart-reconciliation-and-audit-syst.vercel.app/api/audit',
           { headers: { Authorization: `Bearer ${user.token}` } }
         );
         setLogs(data);

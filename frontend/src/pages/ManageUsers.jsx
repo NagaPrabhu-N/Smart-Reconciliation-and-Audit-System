@@ -16,7 +16,7 @@ const ManageUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const { data } = await axios.get('https://smart-recon-testing.vercel.app/api/auth/users', {
+      const { data } = await axios.get('https://smart-reconciliation-and-audit-syst.vercel.app/api/auth/users', {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setUsers(data);
@@ -30,7 +30,7 @@ const ManageUsers = () => {
     setSuccess('');
 
     try {
-      await axios.post('https://smart-recon-testing.vercel.app/api/auth/register', formData, {
+      await axios.post('https://smart-reconciliation-and-audit-syst.vercel.app/api/auth/register', formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setSuccess('User created successfully!');
@@ -44,7 +44,7 @@ const ManageUsers = () => {
     if (!window.confirm('Are you sure you want to delete this user? This cannot be undone.')) return;
 
     try {
-      await axios.delete(`https://smart-recon-testing.vercel.app/api/auth/users/${id}`, {
+      await axios.delete(`https://smart-reconciliation-and-audit-syst.vercel.app/api/auth/users/${id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setUsers(users.filter(u => u._id !== id));

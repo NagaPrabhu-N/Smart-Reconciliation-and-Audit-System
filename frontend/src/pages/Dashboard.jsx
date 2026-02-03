@@ -37,7 +37,7 @@ const Dashboard = () => {
       if (location.state?.historyJobId) {
          try {
             setLoading(true);
-            const { data } = await axios.get(`https://smart-recon-testing.vercel.app/api/recon/status/${location.state.historyJobId}`, {
+            const { data } = await axios.get(`https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/status/${location.state.historyJobId}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             
@@ -55,7 +55,7 @@ const Dashboard = () => {
       if (user?.role === 'viewer') {
         try {
           setLoading(true);
-          const { data } = await axios.get('https://smart-recon-testing.vercel.app/api/recon/latest', {
+          const { data } = await axios.get('https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/latest', {
              headers: { 'Authorization': `Bearer ${token}` }
           });
           
@@ -74,7 +74,7 @@ const Dashboard = () => {
       if (savedJobId) {
         try {
           setLoading(true);
-          const { data } = await axios.get(`https://smart-recon-testing.vercel.app/api/recon/status/${savedJobId}`, {
+          const { data } = await axios.get(`https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/status/${savedJobId}`, {
              headers: { 'Authorization': `Bearer ${token}` }
           });
           
@@ -112,7 +112,7 @@ const Dashboard = () => {
       formData.append('file', systemFile);
 
       try {
-          await axios.post('https://smart-recon-testing.vercel.app/api/recon/system-upload', formData, {
+          await axios.post('https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/system-upload', formData, {
               headers: { 
                   'Content-Type': 'multipart/form-data',
                   'Authorization': `Bearer ${user?.token}`
@@ -135,7 +135,7 @@ const Dashboard = () => {
 
     try {
       const token = user?.token;
-      const { data } = await axios.post('https://smart-recon-testing.vercel.app/api/recon/preview', formData, {
+      const { data } = await axios.post('https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/preview', formData, {
         headers: { 'Content-Type': 'multipart/form-data', 'Authorization': `Bearer ${token}` },
       });
       
@@ -167,7 +167,7 @@ const Dashboard = () => {
       formData.append('mapping', JSON.stringify(mapping)); 
 
       const { data: startData } = await axios.post(
-        'https://smart-recon-testing.vercel.app/api/recon/upload', 
+        'https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/upload', 
         formData, 
         {
           headers: { 
@@ -181,7 +181,7 @@ const Dashboard = () => {
 
       if (startData.isCached) {
          alert('Cached result found.');
-         const { data: resultData } = await axios.get(`https://smart-recon-testing.vercel.app/api/recon/status/${startData.jobId}`, {
+         const { data: resultData } = await axios.get(`https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/status/${startData.jobId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
          });
          setReport(resultData.data);
@@ -193,7 +193,7 @@ const Dashboard = () => {
       const jobId = startData.jobId;
       const pollInterval = setInterval(async () => {
          try {
-            const { data: statusData } = await axios.get(`https://smart-recon-testing.vercel.app/api/recon/status/${jobId}`, {
+            const { data: statusData } = await axios.get(`https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/status/${jobId}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -233,7 +233,7 @@ const Dashboard = () => {
   const handleSaveEdit = async () => {
     try {
       const token = user?.token;
-      await axios.put(`https://smart-recon-testing.vercel.app/api/recon/update/${editRow._id}`, formData, {
+      await axios.put(`https://smart-reconciliation-and-audit-syst.vercel.app/api/recon/update/${editRow._id}`, formData, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
 
@@ -268,7 +268,7 @@ const Dashboard = () => {
   return (
     <div className="flex min-h-screen bg-white font-sans text-black">
       <div className="w-64 bg-black text-white p-6 fixed h-full z-10 border-r border-gray-800">
-        <h2 className="text-2xl font-bold mb-8 tracking-wide text-white">Smart Recon</h2>
+        <h2 className="text-2xl font-bold mb-8 tracking-wide text-white">Smart Reconciliation and Audit System</h2>
         <nav className="space-y-4">
           <button onClick={() => navigate('/dashboard')} className="flex items-center gap-3 w-full p-3 bg-white text-black rounded-md shadow-sm font-medium">
             <LayoutDashboard size={20} /> Dashboard
