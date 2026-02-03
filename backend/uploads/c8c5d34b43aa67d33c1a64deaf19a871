@@ -1,0 +1,8 @@
+transactionID,reference,amount,description
+TXN-1001,REF-1001,242.9,Exact Match (ID + Amount)
+WRONG-ID-01,REF-1002,972.21,"Smart Match (Wrong ID, Correct Ref)"
+TXN-1003,REF-1003,101,Partial Match (Variance < 2%)
+TXN-1004,REF-1004,50000,Mismatch (High Variance)
+TXN-1005,REF-1005,500,Duplicate Row 1
+TXN-1005,REF-1005,500,Duplicate Row 2
+TXN-9999,REF-9999,100,Unmatched (Nothing in System)

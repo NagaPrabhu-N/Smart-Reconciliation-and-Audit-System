@@ -1,0 +1,5 @@
+transactionID,reference,amount,description
+TXN-1001,REF-1001,242.5,Perfect match example
+TXN-1002,37.29,37.29,Mismatch example
+TXN-1003,101,101,Partial match example (Small difference)
+TXN-9999,500,500,Unmatched example (ID does not exist)
