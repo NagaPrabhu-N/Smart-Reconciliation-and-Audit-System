@@ -12,6 +12,20 @@ This project is designed as a **real-world financial reconciliation system**, fo
 - Asynchronous processing
 
 
+## 🔐 Sample Login Credentials (Demo Only)
+
+The following users are **pre-seeded for demonstration and testing purposes**.
+
+> ⚠️ These credentials are for local / demo use only.
+
+| Role    | Email              | Password     |
+|-------- |--------------------|--------------|
+| Admin   | admin@test.com     | password123 |
+| Analyst | analyst@test.com   | password123 |
+| Viewer  | viewer@test.com    | password123 |
+| Sample  | sample@test.com    | password123 |
+
+
 ## 🧠 High-Level Architecture
 
 ```text
@@ -275,6 +289,57 @@ npm run dev
 
 ---
 
+## 🕹️ Usage & Workflow Guide
+
+Follow these steps to test the full lifecycle of the application, including role-specific features.
+
+### 1️⃣ Initial Admin Setup (Prerequisite)
+* **Login:** Use the Admin credentials (`admin@test.com` / `password123`).
+* **Upload System Data (Admin Power):**
+  * Navigate to **"Update System Data"** in the sidebar.
+  * Upload your *Master System Record CSV* (the "Truth" source).
+  * *Action:* This performs a bulk replace operation, wiping old system records and establishing the new baseline for future reconciliations.
+
+### 2️⃣ User Management (Admin Power)
+* **Create Users:**
+  * Go to **"Manage Users"** in the sidebar.
+  * Click **"Add New User"** to create accounts for Analysts or Viewers.
+  * Assign specific roles (`Analyst`, `Viewer`) to enforce access control.
+* **Edit/Delete:** Admins can update user roles or remove access for existing users.
+
+### 3️⃣ Running a Reconciliation (Analyst/Admin)
+* **Login:** Log in as an Analyst (or stay logged in as Admin).
+* **Upload File:**
+  * Click **"Upload New File"**.
+  * Select a *Bank Statement CSV* to compare against the loaded System Data.
+* **Map Columns:**
+  * Map the CSV headers (e.g., `Bank_Ref_ID`) to the system fields (`Transaction ID`, `Amount`).
+* **Process:** Click **"Confirm & Process"**.
+  * The system runs the matching algorithm asynchronously.
+  * Once complete, the **Dashboard Report** will automatically load.
+
+### 4️⃣ Analyzing Results
+* **Dashboard:** View summary charts showing the distribution of Matched vs. Mismatched records.
+* **Detailed Report:** Scroll down to the table view.
+  * **Green Rows:** Perfect matches.
+  * **Yellow Rows:** Partial matches (e.g., variance ≤ 2%).
+  * **Red Rows:** Mismatches or duplicate entries.
+* **Filters:** Use the dropdowns to filter by "Mismatch Only" or search for specific Transaction IDs.
+
+### 5️⃣ Manual Corrections (Admin Power)
+* **Identify:** Locate a "Mismatch" row that requires adjustment (e.g., a known bank fee).
+* **Edit:** Click the **Pencil Icon** (visible only to Admins).
+* **Update:** Change the status to "Matched," adjust the amount, or add an explanatory note.
+* **Save:** The record updates immediately, and a permanent **Audit Log** entry is generated.
+
+### 6️⃣ Audit & History (Viewer/Admin)
+* **Audit Trail:** Navigate to the **"Audit Trail"** page.
+* **Timeline:** View a chronological history of all system actions:
+  * *Who* uploaded files.
+  * *Who* updated the master system data.
+  * *Who* manually corrected records (displaying Old vs. New values).
+* **Historical Snapshot:** Click **"View Data Snapshot"** on any past "File Reconciliation" log to reload the dashboard exactly as it appeared at that time.
+
 ## ☁️ Deployment Notes (Vercel)
 
 * Backend uses `multer.memoryStorage()` (read-only FS compatible)
@@ -323,3 +388,8 @@ npm run dev
 * Real-time progress tracking can be enhanced with WebSockets
 
 ---
+
+## 🔐 Security Notes
+- Passwords are hashed using bcrypt
+- Sample credentials are for demo only
+- No credentials are stored in plaintext in the database
