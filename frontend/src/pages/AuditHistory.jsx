@@ -36,7 +36,8 @@ const AuditHistory = () => {
   return (
     <div className="flex min-h-screen bg-gray-100 font-sans">
       <div className="w-64 bg-white text-black p-6 fixed h-full border-r border-gray-300">
-        <h2 className="text-2xl font-bold mb-8 tracking-wide">Smart Recon</h2>
+        <h2 className="text-2xl font-bold mb-8 tracking-wide">Smart Reconciliation and Audit System
+</h2>
         <nav className="space-y-4">
           <button
             onClick={() => navigate('/dashboard')}
